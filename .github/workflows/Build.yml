@@ -1,6 +1,9 @@
 name:  Mule_Build
 on:
   workflow_call:
+   inputs:
+     Repository:
+          type: string
   workflow_dispatch:
 jobs: 
   Build-Validation:
@@ -9,9 +12,8 @@ jobs:
         - name: CheckOut SourceCode
           uses: actions/checkout@v3
           with:
-            repository: shiyamsundark/Service2-Mule 
+            repository: ${{ inputs.Repository }}
             
         - run: |
                 cd ./ 
                 ls -lart
-                echo ${{ github.repository }}
