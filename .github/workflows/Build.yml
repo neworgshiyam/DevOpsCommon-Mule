@@ -1,6 +1,7 @@
 name:  Mule_Build
 on:
   workflow_call:
+  workflow_dispatch:
 jobs: 
   Build-Validation:
       runs-on: ubuntu-latest
@@ -13,3 +14,4 @@ jobs:
         - run: |
                 cd ./ 
                 ls -lart
+                echo ${{ github.repository }}
