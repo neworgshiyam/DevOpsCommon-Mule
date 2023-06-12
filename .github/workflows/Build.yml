@@ -8,4 +8,8 @@ jobs:
         - name: CheckOut SourceCode
           uses: actions/checkout@v3
           with:
-            repository: shiyamsundark/Service2-Mule  
+            repository: shiyamsundark/Service2-Mule 
+            
+        - run: |
+                cd ./ 
+                ls -lart
