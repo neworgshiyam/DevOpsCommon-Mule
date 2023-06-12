@@ -1,0 +1,11 @@
+name:  Mule_Build
+on:
+  workflow_call:
+jobs: 
+  Build-Validation:
+      runs-on: ubuntu-latest
+      steps: 
+        - name: CheckOut SourceCode
+          uses: actions/checkout@v3
+          with:
+            repository: shiyamsundark/Service2-Mule  
