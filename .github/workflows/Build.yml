@@ -14,6 +14,57 @@ jobs:
           with:
             repository: ${{ inputs.Repository }}
             
-        - run: |
+        - name: Repository code    
+          run: |
                 cd ./ 
                 ls -lart
+        
+        - name: Set Branch Parameters
+          id: Branchname
+          run: echo "Set Branch Parameters"
+        
+        - name: Check Branch Build parameters
+          run: echo "Check Build parameters"
+             
+  Build-Parameters:
+     
+      needs: Build-Validation
+      runs-on: ubuntu-latest
+      steps:    
+        - name: Set Release Version
+          id: versionid
+          run: echo "Set Release Version"
+               
+        - name: Generate summary
+          run: |
+            DATE_STR=$(date +"%d-%m-%Y %H:%M:%S")
+            echo "Build Timestamp: $DATE_STR UTC" >> $GITHUB_STEP_SUMMARY
+               
+  Build:
+      needs: [Build-Validation,Build-Parameters]
+      runs-on: windows-latest
+      permissions:
+        contents: write
+        packages: write
+        actions: write 
+      steps:           
+        - name: Maven Build
+          run: echo "Mvn Build"
+             
+        - name: Zipping  Build Artfifact
+          run: echo "Zipping  Build Artfifact"
+            
+  Fortify:
+        needs: [Build-Validation,Build-Parameters]
+        runs-on: windows-latest
+        steps:           
+        - name: Fortify 
+          run: echo "Fortify"
+         
+          
+  Dev_Deploy:
+   runs-on: ubuntu-latest
+   needs: Build
+   steps:
+      - name: IT Team's Approval
+        run: echo "Approved from IT team..Passing for Devops approval.."
