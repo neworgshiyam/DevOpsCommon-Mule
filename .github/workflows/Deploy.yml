@@ -20,5 +20,5 @@ jobs:
         - name: Version Number
           run: echo "REL_VERSION = ${{ inputs.Version }}"
               
-        - name: Deploy to Sandbox        
-          run: echo "Deploy to Sandbow"
+        - name: Deploy to Cloudhub        
+          run: echo "Deploy to Cloudhub"
