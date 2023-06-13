@@ -1,7 +1,9 @@
 name: Mulesoft - Deploy
 on:
   workflow_call:
-   
+   inputs:
+     Version:
+          type: string  
 jobs:
       
    DeploytoMule:
@@ -16,7 +18,7 @@ jobs:
               distribution: 'adopt'
               
         - name: Version Number
-          run: echo "REL_VERSION = ${{ inputs.version }}"
+          run: echo "REL_VERSION = ${{ inputs.Version }}"
               
         - name: Deploy to Sandbox        
           run: echo "Deploy to Sandbow"
