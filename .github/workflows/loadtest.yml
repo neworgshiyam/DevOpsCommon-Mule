@@ -1,0 +1,21 @@
+name: Loadtest_K6
+on: 
+  workflow_call:
+    inputs:
+     Repository:
+          type: string
+
+jobs:
+  k6_load_test:
+    name: k6 Load Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: CheckOut SourceCode
+        uses: actions/checkout@v3
+        with:
+          repository: ${{ inputs.Repository }}
+
+      - name: Run local k6 test
+        uses: grafana/k6-action@v0.2.0
+        with:
+          filename: ./test.js
