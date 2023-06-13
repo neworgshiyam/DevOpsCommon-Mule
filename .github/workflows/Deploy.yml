@@ -21,6 +21,7 @@ jobs:
           run: echo "REL_VERSION = ${{ inputs.Version }}"
           
         - name: Download Artifact
+          if: ${{ (inputs.Environment == 'dev') || (inputs.Environment == 'test')  }}
           run: echo "Download Artifact"
           
         - name: Download Artifact
