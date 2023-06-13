@@ -30,3 +30,9 @@ jobs:
               
         - name: Deploy to Cloudhub        
           run: echo "Deploy to Cloudhub"
+          
+   Load_Test_K6:
+        needs: DeploytoMule
+        uses: ./.github/workflows/loadtest.yml
+        with:
+             repository: ${{ inputs.Repository }}
