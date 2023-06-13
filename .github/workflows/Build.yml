@@ -5,6 +5,13 @@ on:
      Repository:
           type: string
   workflow_dispatch:
+  
+permissions:
+    contents: write
+    packages: write
+    actions: write
+    id-token: write
+    
 jobs: 
   Build-Validation:
       runs-on: ubuntu-latest
