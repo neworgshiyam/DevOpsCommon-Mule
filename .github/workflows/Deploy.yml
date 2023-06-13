@@ -4,10 +4,10 @@ on:
    inputs:
      Version:
           type: string  
+     Environment:
+          type: string  
 jobs:
-      
-   DeploytoMule:
-  
+   DeploytoMule:  
     runs-on: ubuntu-latest
     steps:
         - uses: actions/checkout@v3
@@ -19,6 +19,13 @@ jobs:
               
         - name: Version Number
           run: echo "REL_VERSION = ${{ inputs.Version }}"
+          
+        - name: Download Artifact
+          run: echo "Download Artifact"
+          
+        - name: Download Artifact
+          if: ${{ inputs.Environment == 'stg' }}
+          run: echo "Download Artifact"
               
         - name: Deploy to Cloudhub        
           run: echo "Deploy to Cloudhub"
