@@ -70,6 +70,9 @@ jobs:
         needs: [Build,Fortify]
         environment: Test-Dev
         steps:
+         - name: CheckOut SourceCode
+           uses: actions/checkout@v3
+     
          - uses: ./.github/workflows/Deploy.yml
            with:
               Version: "23.3.3.3"
