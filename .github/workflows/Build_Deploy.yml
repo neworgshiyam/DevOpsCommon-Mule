@@ -77,7 +77,7 @@ jobs:
         
   Mule_Deploy_test_Approval:
     runs-on: ubuntu-latest
-    name: Dev-APPROVAL
+    name: Test_Deploy_with_Approval
     needs: Mule_Deploy_Dev
     environment: Test-Dev
     steps:
