@@ -72,4 +72,4 @@ jobs:
         steps:
          - uses: ./.github/workflows/Deploy.yml
            with:
-              Version: ${{ inputs.Version }}
+              Version: "23.3.3.3"
