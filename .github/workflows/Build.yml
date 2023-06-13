@@ -64,15 +64,18 @@ jobs:
   Mule_Deploy_Dev:
         needs: [Build,Fortify]
         uses: ./.github/workflows/Deploy.yml
+        
+  Mule_Deploy_test_Approval:
+    runs-on: ubuntu-latest
+    name: Dev-APPROVAL
+    needs: Mule_Deploy_Dev
+    environment: Test-Dev
+    steps:
+      - name: Dev Approval
+        run: echo "Dev Approved"
   
   Mule_Deploy_test:
-        runs-on: ubuntu-latest
-        needs: [Build,Fortify,Mule_Deploy_Dev]
-        environment: Test-Dev
-        steps:
-         - name: CheckOut SourceCode
-           uses: actions/checkout@v3
-     
-         - uses: ./.github/workflows/Deploy.yml
-           with:
-              Version: "23.3.3.3"
+        needs: Mule_Deploy_test_Approval
+        uses: ./.github/workflows/Deploy.yml
+        with:
+             Version: "23.3.3.3"
