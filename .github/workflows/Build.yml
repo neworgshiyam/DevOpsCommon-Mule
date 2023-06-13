@@ -67,7 +67,7 @@ jobs:
   
   Mule_Deploy_test:
         runs-on: ubuntu-latest
-        needs: [Build,Fortify]
+        needs: [Build,Fortify,Mule_Deploy_Dev]
         environment: Test-Dev
         steps:
          - name: CheckOut SourceCode
