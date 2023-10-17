@@ -24,7 +24,7 @@ jobs:
                 -H "Accept: application/vnd.github+json" \
                 -H "Authorization: Bearer ${{ secrets.REPOSITORY_DISPTACH }}" \
                 -H "X-GitHub-Api-Version: 2022-11-28" \
-                https://api.github.com/repos/neworgshiyam/DevOpsCommon-Mule/dispatches \
+                https://api.github.com/repos/neworgshiyam/Service1-Mule/dispatches \
                 -d '{"event_type":"Service1-Mule","client_payload":{"Version":"${{ inputs.version }}","Repo":"${{ github.repository }}"}}'
                 
         # - name: Repository dispatch to Service2-Mule
