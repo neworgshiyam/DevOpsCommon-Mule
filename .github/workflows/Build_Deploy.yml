@@ -25,6 +25,7 @@ jobs:
           run: |
                 cd ./ 
                 ls -lart
+                echo "repository: ${{ inputs.Repository }}"
         
         - name: Set Branch Parameters
           id: Branchname
@@ -68,27 +69,27 @@ jobs:
         - name: Fortify 
           run: echo "Fortify"
         
-  Mule_Deploy_Dev:
-        name: MuleDeploy-Dev
-        needs: [Build,Fortify]
-        uses: ./.github/workflows/Deploy.yml
-        with:
-             Version: "23.3.3.3"
-             Environment: "dev"
+  # Mule_Deploy_Dev:
+  #       name: MuleDeploy-Dev
+  #       needs: [Build,Fortify]
+  #       uses: ./.github/workflows/Deploy.yml
+  #       with:
+  #            Version: "23.3.3.3"
+  #            Environment: "dev"
         
-  Mule_Deploy_test_Approval:
-    runs-on: ubuntu-latest
-    name: Test_Deploy_with_Approval
-    needs: Mule_Deploy_Dev
-    environment: Test-Dev
-    steps:
-      - name: Dev Approval
-        run: echo "Dev Approved"
+  # Mule_Deploy_test_Approval:
+  #   runs-on: ubuntu-latest
+  #   name: Test_Deploy_with_Approval
+  #   needs: Mule_Deploy_Dev
+  #   environment: Test-Dev
+  #   steps:
+  #     - name: Dev Approval
+  #       run: echo "Dev Approved"
   
-  Mule_Deploy_test:
-        name: MuleDeploy-Test
-        needs: Mule_Deploy_test_Approval
-        uses: ./.github/workflows/Deploy.yml
-        with:
-             Version: "23.3.3.3"
-             Environment: "test"
+  # Mule_Deploy_test:
+  #       name: MuleDeploy-Test
+  #       needs: Mule_Deploy_test_Approval
+  #       uses: ./.github/workflows/Deploy.yml
+  #       with:
+  #            Version: "23.3.3.3"
+  #            Environment: "test"
