@@ -16,16 +16,16 @@ jobs:
   Build-Validation:
       runs-on: ubuntu-latest
       steps: 
-        - name: CheckOut SourceCode
-          uses: actions/checkout@v3
-          with:
-            repository: ${{ inputs.Repository }}
+        # - name: CheckOut SourceCode
+        #   uses: actions/checkout@v3
+        #   with:
+        #     repository: ${{ inputs.Repository }}
             
-        - name: Repository code    
-          run: |
-                cd ./ 
-                ls -lart
-                echo "repository: ${{ inputs.Repository }}"
+        # - name: Repository code    
+        #   run: |
+        #         cd ./ 
+        #         ls -lart
+        #         echo "repository: ${{ inputs.Repository }}"
         
         - name: Set Branch Parameters
           id: Branchname
